@@ -1,4 +1,0 @@
-pandas>=1
-networkx>=3,<4
-tqdm>=4,<5
-jupyterlab
