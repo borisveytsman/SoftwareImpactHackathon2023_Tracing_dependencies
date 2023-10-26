@@ -40,4 +40,10 @@ for pypi_name in df["mapped_to"]:
             json.dump(pypi_map, f)
         with open("pypi_importmap_errors.json", "w") as f:
             json.dump(list(errors), f)
+
+with open("pypi_importmap.json", "w") as f:
+    json.dump(pypi_map, f)
+with open("pypi_importmap_errors.json", "w") as f:
+    json.dump(list(errors), f)
+        
         

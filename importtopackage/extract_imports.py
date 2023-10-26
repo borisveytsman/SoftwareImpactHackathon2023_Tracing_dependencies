@@ -151,6 +151,7 @@ def extract_from_pyfile(path, project_path=None):
         result = extract_imports(ast.parse(f.read()))
     for import_def in result:
         import_def['local'] = local_checker.local_possibility(import_def["name"])
+        import_def['filename'] = path
         import_def['filetype'] = 'python'
     return result
 
@@ -183,6 +184,7 @@ def extract_from_notebook(path, project_path=None):
                     for import_def in cell_result:
                         import_def['local'] = local_checker.local_possibility(import_def["name"])
                         import_def['cell'] = index
+                        import_def['filename'] = path
                         import_def['filetype'] = 'notebook'
                     result += cell_result
 
@@ -212,8 +214,6 @@ def extract_from_directory(path):
             if ".ipynb_checkpoints" in filename:
                 continue
             partial_result = extract_from_file(fullpath, path)
-            for import_def in partial_result:
-                import_def['filename'] = fullpath
             result += partial_result
     return result
 
@@ -235,3 +235,5 @@ if __name__ == '__main__':
         csv_buffer = StringIO()
         df.to_csv(csv_buffer, index=False)
         print(csv_buffer.getvalue())
+    else:
+        print(data)
