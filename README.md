@@ -10,7 +10,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 ![scatter plot of number of mentions on x-axis, Katz score on y-axis and colored by ecosystem](./notebooks/katz-mentions-ecosystem.png)
 
-We construct a graph of dependencies between software packages mentioned in the CZI Software Mentions Dataset. We then use the Katz centrality score to rank the importance of each software package.
+We construct a graph of dependencies between software packages mentioned in the CZI Software Mentions Dataset. We then use the Katz centrality score to rank the importance of each software package. The data is [available](https://doi.org/10.5281/zenodo.10048132) as `Brown, E. M. (2023). A Dependency Graph for 460,000 Papers and Their Software Mentions from the CZI Software Mentions Dataset (1.0.0) [Data set]. CZI Research Software Hackathon. Zenodo. https://doi.org/10.5281/zenodo.10048132`.
 
 We find some interesting examples of "most important" (given that some of the ecosystems are incorrectly labelled):
 * [PACE](https://forensiccoe.org/pace/) is the most mentioned software but may not be the most "critical" / connected
