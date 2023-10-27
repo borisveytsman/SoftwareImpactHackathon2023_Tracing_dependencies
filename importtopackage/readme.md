@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2023 Brown, E. M., Nesbitt, A., Hébert-Dufresne, L., Veytsman, B., Pimentel, J. F., Druskat, S., Mietchen, D.
+
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # Bridging the gap between software mentions and end-user research code dependencies
 
 The choco team is using the [CZI Software Mentions](https://datadryad.org/stash/dataset/doi:10.5061/dryad.6wwpzgn2c) to assess the impact of software on science and discover what are the critical packages used by scientists directly or indirectly through transitive dependencies. The dataset is massive and provides a huge extraction of over 1 million software mentions from the body of 2.4 million papers in the NIH PMC-OA Commercial subset, which allows for this type of analysis.
