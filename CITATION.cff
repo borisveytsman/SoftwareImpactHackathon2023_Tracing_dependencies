@@ -39,7 +39,7 @@ keywords:
   - network analysis
   - research software
   - software dependencies
-license: Beerware
+license: MIT
 version: 0.1.dev1
 date-released: '2023-10-27'
 references:
