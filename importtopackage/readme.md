@@ -82,6 +82,14 @@ Next, we analyzed the packages that appear both in the CZI Mention dataset and i
 
 Note that there is an evident mismatch between the packages the scientists mention and the packages that they use in their notebooks, with many packages appearing only on their end-user code and some appearing only on the paper. The reason for some packages appearing only on the paper may be due to the extraction of packages occurring only from notebooks, when using the [Dataset of a Study of Computational reproducibility of Jupyter notebooks from biomedical publications](https://zenodo.org/records/8226725). On the other hand, the reason for some packages not being mentioned in the paper requires further investigation.
 
+Next we investigated the top 20 packages that appear in each category:
+
+![Alt text](image-1.png)
+
+![Alt text](image-2.png)
+
+![Alt text](image-3.png)
+
 ### Conclusion and future work
 
 This project was able to show the mismatch of indirect citation and software mentions (RQ1) in the literature, but there are still some processing and analyses to do to assess the impact of research and to improve the accuracy of the data. Thus, the next steps are:
