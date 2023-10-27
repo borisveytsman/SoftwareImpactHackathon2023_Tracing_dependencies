@@ -3,8 +3,7 @@
 
 cff-version: 1.2.0
 title: >-
-  Identifying central packages in biomedical open source
-  software
+  Exploring the dependencies of the CZI mentions dataset
 message: >-
   If you use this software, please cite it using the
   metadata from this file.
