@@ -1,6 +1,31 @@
 # Exploring the dependencies of the CZI mentions dataset
 
-TODO
+## Exploring the Dependencies of Mentioned Software in the CZI Software Mentions Dataset
+
+![scatter plot of number of mentions on x-axis, Katz score on y-axis and colored by ecosystem](./notebooks/katz-mentions-ecosystem.png)
+
+We construct a graph of dependencies between software packages mentioned in the CZI Software Mentions Dataset. We then use the Katz centrality score to rank the importance of each software package.
+
+We find some interesting examples of "most important" (given that some of the ecosystems are incorrectly labelled):
+* [PACE](https://forensiccoe.org/pace/) is the most mentioned software but may not be the most "critical" / connected
+* [VELVET](https://bioinformaticshome.com/tools/wga/descriptions/Velvet.html#gsc.tab=0) is seemingly the "most critical" / connected software that has very few mentions
+* [PERMANOVA](https://rdocumentation.org/packages/PERMANOVA/versions/0.2.0/topics/PERMANOVA) is seemingly a "true" (mentioned and identified in the correct ecosystem) which is incredidly important and correct and has a number of mentions.
+
+### Software That is Important but has No Mentions in the Literature
+
+All of these are NEVER mentioned.
+
+PyPI - `six`: a package to enable future features from Python 3 within Python 2.
+![pypi six is the most important](https://imgflip.com/i/8426hs)
+
+Bioconductor - `BiocIO`: a package for basic file handling and some formats
+![BiocIO is the most important](https://imgflip.com/i/8426yf)
+
+CRAN - `isoband`: An R package to generate contour lines and polygons.
+![isoband is the most important](https://imgflip.com/i/84273k)
+
+
+## Exploring the Dependencies of Imported Software within Notebooks from the Combined CZI Software Mentions Dataset and 
 
 ## About this project
 
