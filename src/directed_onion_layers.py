@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 Brown, E. M., Nesbitt, A., Hébert-Dufresne, L., Veytsman, B., Pimentel, J. F., Druskat, S., Mietchen, D., Howison, J.
+#
+# SPDX-License-Identifier: MIT
+
 import networkx as nx
 
 def directed_onion_layers(graph):
