@@ -48,8 +48,8 @@ version: 0.1.dev1
 date-released: '2023-10-27'
 references:
   - authors:
-      - given-names: Eva
-        family-names: Maxfield Brown
+      - given-names: Eva Maxfield
+        family-names: Brown
     date-released: "2023-10-27"
     doi: 10.5281/zenodo.10048132
     title: "A Dependency Graph for 460,000 Papers and Their Software Mentions from the CZI Software Mentions Dataset"
