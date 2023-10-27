@@ -1,0 +1,54 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  Identifying central packages in biomedical open source
+  software
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Eva Maxfield
+    family-names: Brown
+    orcid: 'https://orcid.org/0000-0003-2564-0373'
+  - given-names: Andrew
+    family-names: Nesbitt
+    orcid: 'https://orcid.org/0009-0007-2710-1118'
+  - given-names: Laurent
+    family-names: Hébert-Dufresne
+    orcid: 'https://orcid.org/0000-0002-0008-3673'
+  - given-names: Boris
+    family-names: Veytsman
+    orcid: 'https://orcid.org/0000-0003-4674-8113'
+  - given-names: Joao Felipe
+    family-names: Pimentel
+    orcid: 'https://orcid.org/0000-0001-6680-7470'
+  - given-names: Stephan
+    family-names: Druskat
+    orcid: 'https://orcid.org/0000-0003-4925-7248'
+  - given-names: Daniel
+    family-names: Mietchen
+    orcid: 'https://orcid.org/0000-0001-9488-1870'
+repository-code: >-
+  https://github.com/borisveytsman/SoftwareImpactHackathon2023_Tracing_dependencies
+abstract: >-
+  In this work we explore approaches to making software
+  package infrastructure underlying science more visible.
+keywords:
+  - network analysis
+  - research software
+  - software dependencies
+license: Beerware
+version: 0.1.dev1
+date-released: '2023-10-27'
+references:
+  - authors:
+      - given-names: Eva
+        family-names: Maxfield Brown
+    date-released: "2023-10-27"
+    doi: 10.5281/zenodo.10048132
+    title: "A Dependency Graph for 460,000 Papers and Their Software Mentions from the CZI Software Mentions Dataset"
+    type: data
+    version: 1.0.0
