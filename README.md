@@ -22,12 +22,15 @@ We find some interesting examples of "most important" (given that some of the ec
 All of these are NEVER mentioned.
 
 PyPI - `six`: a package to enable future features from Python 3 within Python 2.
+
 ![pypi six is the most important](images/1.jpg)
 
 Bioconductor - `BiocIO`: a package for basic file handling and some formats
+
 ![BiocIO is the most important](images/2.jpg)
 
 CRAN - `isoband`: An R package to generate contour lines and polygons.
+
 ![isoband is the most important](images/3.jpg)
 
 
