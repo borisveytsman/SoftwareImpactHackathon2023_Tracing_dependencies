@@ -6,6 +6,9 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Exploring the dependencies of the CZI mentions dataset
 
+![zoomed_out](https://github.com/borisveytsman/SoftwareImpactHackathon2023_Tracing_dependencies/assets/1060/f0a6b5dc-d0b3-4642-9fee-7a389a380b73)
+
+
 ## Exploring the Dependencies of Mentioned Software in the CZI Software Mentions Dataset
 
 ![scatter plot of number of mentions on x-axis, Katz score on y-axis and colored by ecosystem](./notebooks/katz-mentions-ecosystem.png)
