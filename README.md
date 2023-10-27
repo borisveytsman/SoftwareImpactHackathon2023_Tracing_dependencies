@@ -24,7 +24,7 @@ We find some interesting examples of "most important" (given that some of the ec
 
 All of these are NEVER mentioned.
 
-PyPI - `six`: a package to enable future features from Python 3 within Python 2.
+PyPI - `six`: Python 2 and 3 compatibility utilities.
 
 ![pypi six is the most important](images/1.jpg)
 
