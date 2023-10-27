@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2023 Brown, E. M., Nesbitt, A., Hébert-Dufresne, L., Veytsman, B., Pimentel, J. F., Druskat, S., Mietchen, D.
+
+SPDX-License-Identifier: CC0-BY-4.0
+-->
+
 # Exploring the dependencies of the CZI mentions dataset
 
 TODO
