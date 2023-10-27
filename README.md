@@ -1,16 +1,12 @@
-# Hackathon-Template
+<!--
+SPDX-FileCopyrightText: 2023 Brown, E. M., Nesbitt, A., Hébert-Dufresne, L., Veytsman, B., Pimentel, J. F., Druskat, S., Mietchen, D.
 
-This is a template repo for external hackathon projects. Please build your project off of this template:
-1. Click the ‘use this template’ button above to create a new repository, and choose an appropriate name for your project. The suggested naming scheme is: `SoftwareImpactHackathon2023_PROJECT`.
-2. Turn on basic [security features](https://docs.github.com/en/code-security/getting-started/github-security-features) for your repository under Settings -> Security and Analysis. We strongly recommend you enable at least [Private vulnerability reporting](https://docs.github.com/en/code-security/security-advisories/working-with-repository-security-advisories/configuring-private-vulnerability-reporting-for-a-repository), [Dependabot security updates](https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/configuring-dependabot-security-updates) and [Secret Scanning](https://docs.github.com/en/code-security/secret-scanning/configuring-secret-scanning-for-your-repositories).
-3. Add your project link and description to the list of hackathon projects we’re curating at https://github.com/chanzuckerberg/software-impact-hackathon-2023 , by making a pull request to that repo.
-4. Add your name or an appropriate copyright owner to the LICENSE file. CZI will not own the code in your repository.
-5. [Grant privileges](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository)  to other collaborators, if desired.
-6. Replace this section of the readme and the above "Hackathon-Template" heading with an appropriate readme and title for your project.
+SPDX-License-Identifier: CC-BY-4.0
+-->
 
-*Please do not modify or delete any other part of the readme below this line.*
+# Exploring the dependencies of the CZI mentions dataset
 
-***
+TODO
 
 ## About this project
 
@@ -25,3 +21,14 @@ Contributions to this project are subject to CZI’s Contributor Covenant [code 
 ## Reporting Security Issues
 
 If you believe you have found a security issue, please responsibly disclose by contacting the repository owner via the ‘security’ tab above.
+
+## Licenses
+
+Licenses are annotated according to the [REUSE Specification v3.0](https://reuse.software/spec/). 
+Please see the single files or respective `.license` files for the actual licenses.
+
+Generally, 
+
+- code is licensed under the MIT license
+- documents are licensed under CC-BY-4.0
+- some data files and other files are licensed under CC0-1.0
