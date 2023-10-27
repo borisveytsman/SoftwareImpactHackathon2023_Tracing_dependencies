@@ -24,7 +24,7 @@ If you believe you have found a security issue, please responsibly disclose by c
 
 ## Licenses
 
-Licenses are annotated according to the [REUSE SPecification v3.0](https://reuse.software/spec/). 
+Licenses are annotated according to the [REUSE Specification v3.0](https://reuse.software/spec/). 
 Please see the single files or respective `.license` files for the actual licenses.
 
 Generally, 
