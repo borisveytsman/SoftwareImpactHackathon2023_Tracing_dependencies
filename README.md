@@ -21,3 +21,14 @@ Contributions to this project are subject to CZI’s Contributor Covenant [code 
 ## Reporting Security Issues
 
 If you believe you have found a security issue, please responsibly disclose by contacting the repository owner via the ‘security’ tab above.
+
+## Licenses
+
+Licenses are annotated according to the [REUSE SPecification v3.0](https://reuse.software/spec/). 
+Please see the single files or respective `.license` files for the actual licenses.
+
+Generally, 
+
+- code is licensed under the MIT license
+- documents are licensed under CC-BY-4.0
+- some data files and other files are licensed under CC0-1.0
