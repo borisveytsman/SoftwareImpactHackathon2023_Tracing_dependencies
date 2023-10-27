@@ -63,3 +63,8 @@ Generally,
 - code is licensed under the MIT license
 - documents are licensed under CC-BY-4.0
 - some data files and other files are licensed under CC0-1.0
+
+## Cite this project
+
+To cite this project, please use the metadata in [`CITATION.cff`](CITATION.cff).
+You can also copy and paste an APA-formattes string, or a BibTeX entry directly from the "Cite this repository" widget on GitHub.
