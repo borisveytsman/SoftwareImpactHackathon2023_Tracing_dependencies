@@ -67,4 +67,4 @@ Generally,
 ## Cite this project
 
 To cite this project, please use the metadata in [`CITATION.cff`](CITATION.cff).
-You can also copy and paste an APA-formattes string, or a BibTeX entry directly from the "Cite this repository" widget on GitHub.
+You can also copy and paste an APA-formatted string, or a BibTeX entry directly from the "Cite this repository" widget on GitHub.
