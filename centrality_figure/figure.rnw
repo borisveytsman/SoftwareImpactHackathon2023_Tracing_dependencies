@@ -1,0 +1,91 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{authblk}
+\usepackage{natbib}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{doi}
+\title{Figures for the paper: ``Biomedical Open Source Software:
+  Crucial Packages and Hidden Heroes''} 
+\author[1]{Andrew Nesbitt}
+\author[2,3]{Boris Veytsman}
+\author[4]{Daniel Mietchen}
+\author[5]{Eva Maxfield Brown}
+\author[6]{James Howison}
+\author[7]{João Felipe Pimentel}
+\author[8]{Laurent H\'ebert-Dufresne}
+\author[9]{Stephan Druskat}
+\affil[1]{Ecosyste.ms}
+\affil[2]{Chan Zuckerberg Initiative, Redwood City, CA 94063, USA}
+\affil[3]{School of Systems Biology, George Mason University,
+  Fairfax, VA 22030, USA}
+\affil[4]{Ronin Institute for Independent Scholarship, Montclair, NJ 07043, USA}
+\affil[5]{University of Washington}
+\affil[6]{The University of Texas at Austin}
+\affil[7]{Universidade Federal Fluminense}
+\affil[8]{The University of Vermont}
+\affil[9]{German Aerospace Center (DLR), 12489 Berlin, Germany}
+\date{April 2024}
+
+\begin{document}
+\maketitle 
+
+<<setup, message=F>>=
+opts_chunk$set(fig.path="00_figures/", cache.lazy=F,
+               cache=T, cache.path="00_cache/",
+               linewidth=60
+               )
+hook_output = knit_hooks$get('output')
+knit_hooks$set(output = function(x, options) {
+  # this hook is used only when the linewidth option is not NULL
+  if (!is.null(n <- options$linewidth)) {
+    x = knitr:::split_lines(x)
+    # any lines wider than n should be wrapped
+    if (any(nchar(x) > n)) x = strwrap(x, width = n)
+    x = paste(x, collapse = '\n')
+  }
+  hook_output(x, options)
+})
+library(tidyverse)
+library(ggthemes)
+theme_set(theme_bw())
+options(tikzDefaultEngine='luatex')
+@ 
+
+Calculation of Katz centrality is straightforward, but requires rather
+large computing resources, so we precalculate it and stored in a csv
+file.  We also stored there the information about the vertices of the
+dependencies graph.  So now we need to read the data and merge them
+
+<<reading, message=F>>=
+mentions <- read_csv("mentions.csv.gz") %>%
+    rename("ecosystem"="0",
+           "czi_id"="1",
+           "keywords"="2",
+           "mentions_count"="3") %>%
+    select(Id, ecosystem, mentions_count) 
+centrality <- read_csv("centrality.csv.gz", 
+                       col_names=c("Id", "centrality"))
+mentions  <- mentions %>% left_join(centrality) %>%
+    filter(ecosystem != 'paper' & !is.na(mentions_count) &
+           !is.na(centrality))
+highly_impactful <- mentions %>%
+    filter(centrality>0.15 | mentions_count > 7500)
+@ 
+
+The plot
+
+<<plot, warning=F, dev='tikz'>>=
+mentions %>% ggplot + 
+    geom_point(aes(x=mentions_count,
+                               y=centrality, color=ecosystem)) +
+    geom_text(data=highly_impactful,
+              aes(mentions_count, centrality, color=ecosystem,
+                  label=Id), nudge_y=0.004, nudge_x=-1000,
+              show.legend=FALSE)+
+    theme(legend.position=c(0.75, 0.20), 
+          legend.box.background = element_rect(colour = "black")) +
+    labs(x="Mentions", y="Katz centrality")
+@ 
+
+\end{document}
