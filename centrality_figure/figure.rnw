@@ -82,7 +82,7 @@ highly_impactful
 
 The plot
 
-<<plot_unweighted, warning=F>>=
+<<plot_unweighted, warning=F, dev='tikz'>>=
 mentions %>% ggplot + 
     geom_point(aes(x=mentions_count,
                                y=centrality, color=ecosystem)) +
@@ -100,7 +100,7 @@ mentions %>% ggplot +
 
 
 For the weighted graph calculate the central component and the full graph
-<<reading_weighted, message=F>>=
+<<reading_weighted, message=F, dev='tikz'>>=
 centrality_LCC <- read_csv("centrality_weighted_network_LCC.csv.gz", 
                        col_names=c("Id", "centrality"))
 mentions_LCC  <- mentions0 %>% left_join(centrality_LCC) %>%
@@ -120,7 +120,7 @@ highly_impactful_complete
 @ 
 
 
-<<plot_LCC, warning=F>>=
+<<plot_LCC, warning=F, dev='tikz'>>=
 mentions_LCC %>% ggplot + 
     geom_point(aes(x=mentions_count,
                                y=centrality, color=ecosystem)) +
@@ -133,7 +133,7 @@ mentions_LCC %>% ggplot +
     labs(x="Mentions", y="Katz centrality")
 @ 
 
-<<plot_complete, warning=F>>=
+<<plot_complete, warning=F, dev='tikz'>>=
 mentions_complete %>% ggplot + 
     geom_point(aes(x=mentions_count,
                                y=centrality, color=ecosystem)) +
@@ -144,6 +144,35 @@ mentions_complete %>% ggplot +
     theme(legend.position=c(0.75, 0.20), 
           legend.box.background = element_rect(colour = "black")) +
     labs(x="Mentions", y="Katz centrality")
+@ 
+
+\section{Combined figure}
+\label{sec:combined}
+
+It makes sense to make a combined figure to combine all three plots.
+
+<<plot_combined, warning=F, dev="tikz">>=
+mentions_combined  <- bind_rows(
+    mentions %>% mutate(Type = "Unweighted"),
+    mentions_LCC %>% mutate(Type = "Weighted, LCC only"),
+    mentions_complete %>% mutate(Type = "Weighted, complete graph"))
+highly_impactful_combined  <- bind_rows(
+    highly_impactful %>% mutate(Type = "Unweighted"),
+    highly_impactful_LCC %>% mutate(Type = "Weighted, LCC only"),
+    highly_impactful_complete %>% mutate(Type = "Weighted, complete graph"))
+
+mentions_combined %>% ggplot + 
+    geom_point(aes(x=mentions_count,
+                               y=centrality, color=ecosystem)) +
+    geom_text_repel(data=highly_impactful_combined,
+              aes(mentions_count, centrality, color=ecosystem,
+                  label=Id), point.padding=0.2,
+              show.legend=FALSE)+
+    theme(legend.position=c(0.75, 0.20), 
+          legend.box.background = element_rect(colour = "black")) +
+    labs(x="Mentions", y="Katz centrality") +
+    facet_wrap(~Type, ncol=2, scale='free_y')
+
 @ 
 
 \end{document}
