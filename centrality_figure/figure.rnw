@@ -48,17 +48,23 @@ knit_hooks$set(output = function(x, options) {
 })
 library(tidyverse)
 library(ggthemes)
+library(ggrepel)
 theme_set(theme_bw())
 options(tikzDefaultEngine='luatex')
 @ 
+
+\section{Unweighted graph}
+\label{sec:unweighted}
+
+
 
 Calculation of Katz centrality is straightforward, but requires rather
 large computing resources, so we precalculate it and stored in a csv
 file.  We also stored there the information about the vertices of the
 dependencies graph.  So now we need to read the data and merge them
 
-<<reading, message=F>>=
-mentions <- read_csv("mentions.csv.gz") %>%
+<<reading_unweighted, message=F>>=
+mentions0 <- read_csv("mentions.csv.gz") %>%
     rename("ecosystem"="0",
            "czi_id"="1",
            "keywords"="2",
@@ -66,22 +72,74 @@ mentions <- read_csv("mentions.csv.gz") %>%
     select(Id, ecosystem, mentions_count) 
 centrality <- read_csv("centrality.csv.gz", 
                        col_names=c("Id", "centrality"))
-mentions  <- mentions %>% left_join(centrality) %>%
+mentions  <- mentions0 %>% left_join(centrality) %>%
     filter(ecosystem != 'paper' & !is.na(mentions_count) &
            !is.na(centrality))
 highly_impactful <- mentions %>%
     filter(centrality>0.15 | mentions_count > 7500)
+highly_impactful
 @ 
 
 The plot
 
-<<plot, warning=F, dev='tikz'>>=
+<<plot_unweighted, warning=F>>=
 mentions %>% ggplot + 
     geom_point(aes(x=mentions_count,
                                y=centrality, color=ecosystem)) +
-    geom_text(data=highly_impactful,
+    geom_text_repel(data=highly_impactful,
               aes(mentions_count, centrality, color=ecosystem,
-                  label=Id), nudge_y=0.004, nudge_x=-1000,
+                  label=Id), point.padding=0.2,
+              show.legend=FALSE)+
+    theme(legend.position=c(0.75, 0.20), 
+          legend.box.background = element_rect(colour = "black")) +
+    labs(x="Mentions", y="Katz centrality") 
+@ 
+
+\section{Weighted graph}
+\label{sec:weighted}
+
+
+For the weighted graph calculate the central component and the full graph
+<<reading_weighted, message=F>>=
+centrality_LCC <- read_csv("centrality_weighted_network_LCC.csv.gz", 
+                       col_names=c("Id", "centrality"))
+mentions_LCC  <- mentions0 %>% left_join(centrality_LCC) %>%
+    filter(ecosystem != 'paper' & !is.na(mentions_count) &
+           !is.na(centrality))
+highly_impactful_LCC <- mentions_LCC %>%
+    filter(centrality>0.15 | mentions_count > 7500)
+highly_impactful_LCC    
+centrality_complete <- read_csv("centrality_weighted_network_complete.csv.gz", 
+                       col_names=c("Id", "centrality"))
+mentions_complete  <- mentions0 %>% left_join(centrality_complete) %>%
+    filter(ecosystem != 'paper' & !is.na(mentions_count) &
+           !is.na(centrality))
+highly_impactful_complete <- mentions_complete %>%
+    filter(centrality>0.15 | mentions_count > 7500)
+highly_impactful_complete    
+@ 
+
+
+<<plot_LCC, warning=F>>=
+mentions_LCC %>% ggplot + 
+    geom_point(aes(x=mentions_count,
+                               y=centrality, color=ecosystem)) +
+    geom_text_repel(data=highly_impactful_LCC,
+              aes(mentions_count, centrality, color=ecosystem,
+                  label=Id), point.padding=0.2,
+              show.legend=FALSE)+
+    theme(legend.position=c(0.75, 0.20), 
+          legend.box.background = element_rect(colour = "black")) +
+    labs(x="Mentions", y="Katz centrality")
+@ 
+
+<<plot_complete, warning=F>>=
+mentions_complete %>% ggplot + 
+    geom_point(aes(x=mentions_count,
+                               y=centrality, color=ecosystem)) +
+    geom_text_repel(data=highly_impactful_complete,
+              aes(mentions_count, centrality, color=ecosystem,
+                  label=Id), point.padding=0.2,
               show.legend=FALSE)+
     theme(legend.position=c(0.75, 0.20), 
           legend.box.background = element_rect(colour = "black")) +
