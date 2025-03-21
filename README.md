@@ -4,6 +4,21 @@ SPDX-FileCopyrightText: 2023 Brown, E. M., Nesbitt, A., Hébert-Dufresne, L., Ve
 SPDX-License-Identifier: CC-BY-4.0
 -->
 
+# Steps to Reproduce
+
+1. Install dependencies using `pip install -e .` or with [Just](https://github.com/casey/just) with `just install`.
+2. Download some additional data files from: https://zenodo.org/records/10045415
+    1. bioconductor_with_mention_counts.ndjson.tar.gz
+    2. cran_with_mention_counts.ndjson.tar.gz
+    3. pypi_with_mentions.ndjson.tar.gz
+    4. comm_disambiguated_cvis_count.json.tar.gz
+3. Decompress each of these files and place them in the `data/` directory.
+4. Run the `preprocess.ipynb` notebook in the `notebooks/` directory. This will create the "dois-graph/full-graph.gexf" file in the `data/` directory.
+5. Run the `directed-core-analysis.ipynb` notebook in the `notebooks/` directory. This will use the "dois-graph/full-graph.gexf" file in the `data/` directory to create the "pruned-network.csv" and "pruned-network.gexf" files in the `data/` directory.
+6. Run the `visualization.ipynb` notebook in the `notebooks/` directory. This will use the "pruned-network.gexf" file in the `data/` to create the final mentions over katz centrality visualization.
+
+All other visualizations in the original paper are created directly in Gephi from the "pruned-network.gexf" file. In Gephi, node size represents Katz centrality with a factor of 4 between the minimum and maximum value, nodes then follow the Yifan Hu layout with optimal distance 100.0 and relative strength 0.2 on edges
+
 # Exploring the dependencies of the CZI mentions dataset
 
 ![zoomed_out](https://github.com/borisveytsman/SoftwareImpactHackathon2023_Tracing_dependencies/assets/1060/f0a6b5dc-d0b3-4642-9fee-7a389a380b73)

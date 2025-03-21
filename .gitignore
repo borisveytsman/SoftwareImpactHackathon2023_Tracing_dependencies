@@ -131,3 +131,11 @@ index.tex
 
 # Project specific
 # data/
+data/dois-graph/*
+bioconductor_with_mention_counts*
+comm_disambiguated_cvis_count*
+cran_with_mention_counts*
+pypi_with_mentions*
+openalex.csv
+pruned-network.csv
+pruned-network.gexf
