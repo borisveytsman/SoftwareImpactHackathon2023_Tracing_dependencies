@@ -34,6 +34,7 @@ dependencies = [
   "ipython",
   "jupyterlab",
   "opinionated>=0.0.2.8,<0.1",
+  "scipy>=1,<2",
 ]
 
 # extra dependencies
