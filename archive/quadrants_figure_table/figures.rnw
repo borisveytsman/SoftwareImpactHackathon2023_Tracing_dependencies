@@ -176,15 +176,6 @@ mentions_combined %>% ggplot +
 
 @ 
 
-\section{Statistics}
-
-The plots are very sqewed, as shown by the statistics
-
-<<stats>>=
-mentions_combined %>% group_by(ecosystem, Type) %>%
-    summarize(Gmentions=Gini(mentions_count),
-              Gcentrality=Gini(centrality))
-@ 
 
 
 \end{document}

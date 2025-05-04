@@ -56,6 +56,7 @@ library(ggthemes)
 library(ggrepel)
 theme_set(theme_bw())
 options(tikzDefaultEngine='luatex')
+library(DescTools)
 @ 
 
 Some functions to print the results
@@ -184,6 +185,40 @@ mentions_LCC %>% print_pasteur()
 mentions_LCC %>% print_popular()
 mentions_LCC %>% print_nebraska()
 print_tail() 
+@ 
+
+
+\section{Summary statistics}
+\label{sec:summary}
+
+<<print_summary_mentions>>=
+ecosystems=mentions %>% distinct(ecosystem) %>% pull(ecosystem) %>%
+sort()
+walk(ecosystems, function (system) {
+    counts  <- mentions %>% filter(ecosystem==system) %>%
+        pull(mentions_count)
+    zero_frac  <- sum(counts==0)/length(counts)
+    
+    result=c(system, median(counts), IQR(counts), max(counts), 
+             Gini(counts),
+             zero_frac)
+    cat(result, sep = " & ")
+    cat("\\\\\n")
+    })
+
+graphs <- list(mentions, mentions_complete, mentions_LCC)
+walk(graphs, function(graph) {
+    walk(ecosystems, function(system) {
+        centrality <- graph %>% filter(ecosystem==system) %>%
+            pull(centrality)
+        result=c(system, median(centrality), IQR(centrality), 
+                 max(centrality), 
+                 Gini(centrality))
+        cat(result, sep = " & ")
+        cat("\\\\\n")
+    })
+    })
+
 @ 
 
 
