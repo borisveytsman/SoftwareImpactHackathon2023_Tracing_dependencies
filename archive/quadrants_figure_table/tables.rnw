@@ -199,7 +199,7 @@ walk(ecosystems, function (system) {
         pull(mentions_count)
     zero_frac  <- sum(counts==0)/length(counts)
     
-    result=c(system, median(counts), IQR(counts), max(counts), 
+    result=c(system, length(counts), median(counts), IQR(counts), max(counts), 
              Gini(counts),
              zero_frac)
     cat(result, sep = " & ")
