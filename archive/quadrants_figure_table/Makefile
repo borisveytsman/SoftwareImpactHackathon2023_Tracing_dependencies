@@ -1,4 +1,4 @@
-RNW = figure.rnw tables.rnw
+RNW = figures.rnw tables.rnw
 
 ENGINE = pdflatex
 ARGS = ""

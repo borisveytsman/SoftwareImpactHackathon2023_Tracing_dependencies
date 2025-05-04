@@ -1,4 +1,4 @@
-This directory contains sources for figure and tables in the publication 
+This directory contains sources for figures and tables in the publication 
 
 ```
 @ARTICLE{DependenciesArXiv2024,
