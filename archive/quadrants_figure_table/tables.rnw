@@ -120,8 +120,8 @@ print_nebraska <- function(tbl, n=12, cutoff=0.5) {
 }
 print_numscipy <- function(tbl) {
         cat("\\multicolumn{6}{c}{\\dotfill}\\\\\n")
-    tbl %>% filter(Id=='numpy' | Id == 'scipy') %>%
-        slice_max(n=2, order_by=mentions_percentile+centrality_percentile) %>%
+    tbl %>% filter(Id=='numpy' | Id == 'scipy' | Id == 'napari') %>%
+        slice_max(n=3, order_by=mentions_percentile+centrality_percentile) %>%
         print_body()
 }
 @ 
