@@ -25,7 +25,7 @@
 \affil[7]{Universidade Federal Fluminense}
 \affil[8]{The University of Vermont}
 \affil[9]{German Aerospace Center (DLR), 12489 Berlin, Germany}
-\date{April 2024}
+\date{September 2025}
 
 \begin{document}
 \maketitle 
@@ -95,6 +95,8 @@ print_body  <- function(tbl) {
         })}
 @ 
 
+
+
 Printing the quadrants
 
 <<print_quadrants>>=
@@ -102,6 +104,7 @@ print_pasteur <- function(tbl, n=12) {
     cat("\\multicolumn{6}{c}{\\bfseries ``Pasteur''}\\\\\n")
     tbl %>% slice_max(n=n, order_by=mentions_percentile+centrality_percentile) %>%
         print_body()
+
 }
 print_popular <- function(tbl, n=12, cutoff=0.5) {
     cat("\\multicolumn{6}{c}{\\bfseries Popular}\\\\\n")
@@ -113,6 +116,12 @@ print_nebraska <- function(tbl, n=12, cutoff=0.5) {
     cat("\\multicolumn{6}{c}{\\bfseries ``Nebraska''}\\\\\n")
     tbl %>% filter(mentions_percentile<=cutoff) %>%
         slice_max(n=n, order_by=centrality_percentile) %>%
+        print_body()
+}
+print_numscipy <- function(tbl) {
+        cat("\\multicolumn{6}{c}{\\dotfill}\\\\\n")
+    tbl %>% filter(Id=='numpy' | Id == 'scipy') %>%
+        slice_max(n=2, order_by=mentions_percentile+centrality_percentile) %>%
         print_body()
 }
 @ 
@@ -144,6 +153,7 @@ mentions  <- mentions0 %>% left_join(centrality) %>%
            centrality_percentile=percent_rank(centrality))
 print_head()
 mentions %>% print_pasteur()
+mentions %>% print_numscipy()
 mentions %>% print_popular()
 mentions %>% print_nebraska()
 print_tail() 
@@ -163,6 +173,7 @@ mentions_complete  <- mentions0 %>% left_join(centrality_complete) %>%
 
 print_head()  
 mentions_complete %>% print_pasteur()
+mentions_complete %>% print_numscipy()
 mentions_complete %>% print_popular()
 mentions_complete %>% print_nebraska()
 print_tail() 
@@ -182,6 +193,7 @@ mentions_LCC  <- mentions0 %>% left_join(centrality_LCC) %>%
 
 print_head()
 mentions_LCC %>% print_pasteur()
+mentions_LCC %>% print_numscipy()
 mentions_LCC %>% print_popular()
 mentions_LCC %>% print_nebraska()
 print_tail() 

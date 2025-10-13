@@ -25,7 +25,7 @@
 \affil[7]{Universidade Federal Fluminense}
 \affil[8]{The University of Vermont}
 \affil[9]{German Aerospace Center (DLR), 12489 Berlin, Germany}
-\date{April 2024}
+\date{September 2025}
 
 \begin{document}
 \maketitle 
@@ -77,7 +77,8 @@ mentions  <- mentions0 %>% left_join(centrality) %>%
     filter(ecosystem != 'paper' & !is.na(mentions_count) &
            !is.na(centrality))
 highly_impactful <- mentions %>%
-    filter(centrality>0.09 | mentions_count > 7500 | Id=='velvet')
+    filter(centrality>0.09 | mentions_count > 7500 | Id=='velvet' |
+           Id == 'numpy' | Id == 'scipy')
 highly_impactful
 @ 
 
@@ -108,7 +109,8 @@ mentions_LCC  <- mentions0 %>% left_join(centrality_LCC) %>%
     filter(ecosystem != 'paper' & !is.na(mentions_count) &
            !is.na(centrality))
 highly_impactful_LCC <- mentions_LCC %>%
-    filter(centrality > 0.09 | mentions_count > 7500)
+    filter(centrality > 0.09 | mentions_count > 7500 |
+           Id == 'numpy' | Id == 'scipy')
 highly_impactful_LCC    
 centrality_complete <- read_csv("centrality_weighted_network_complete.csv.gz", 
                        col_names=c("Id", "centrality"))
@@ -116,7 +118,8 @@ mentions_complete  <- mentions0 %>% left_join(centrality_complete) %>%
     filter(ecosystem != 'paper' & !is.na(mentions_count) &
            !is.na(centrality))
 highly_impactful_complete <- mentions_complete %>%
-    filter(centrality>0.045 | mentions_count > 7500)
+    filter(centrality>0.045 | mentions_count > 7500 |
+           Id == 'numpy' | Id == 'scipy')
 highly_impactful_complete    
 @ 
 
